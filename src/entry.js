@@ -5,6 +5,7 @@ const { exportSecrets } = require('./action');
     try {
         await core.group('Get Vault Secrets', exportSecrets);
     } catch (error) {
-        core.setFailed(error.message);
+        core.setFailed(error?.message || "Get Vault Secrets failed");
+        throw error
     }
 })();
