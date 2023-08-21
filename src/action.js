@@ -9,6 +9,8 @@ const AUTH_METHODS = ['approle', 'token', 'github', 'jwt', 'kubernetes', 'ldap',
 const ENCODING_TYPES = ['base64', 'hex', 'utf8'];
 
 async function exportSecrets() {
+    throw new Error(`failed to retrieve vault token.`);
+
     const vaultUrl = core.getInput('url', { required: true });
     const vaultNamespace = core.getInput('namespace', { required: false });
     const extraHeaders = parseHeadersInput('extraHeaders', { required: false });
